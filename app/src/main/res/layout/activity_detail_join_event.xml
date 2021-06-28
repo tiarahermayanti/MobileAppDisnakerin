@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.DetailJoinEvent">
+
+    <ImageView
+        android:id="@+id/imgFoto"
+        android:src="@drawable/buttonabu"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_width="500px"
+        android:layout_height="400px" />
+
+
+    <TextView
+        android:layout_below="@+id/imgFoto"
+        android:id="@+id/txtNamaP"
+        android:layout_marginTop="20dp"
+        android:text="Tiara Hermayanti"
+        android:paddingLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_below="@+id/imgFoto"
+        android:layout_toRightOf="@+id/txtNamaP"
+        android:layout_marginTop="20dp"
+        android:text=", Anda Terdaftar Pada Event : "
+        android:paddingRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_below="@+id/txtNamaP"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/txtNamaE"
+            android:text="Sosialisasi Pangan"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="17sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"/>
+
+        <View android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#bbb"/>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center">
+
+            <ImageView
+                android:src="@drawable/timeblue"
+                android:layout_width="50px"
+                android:layout_height="50px"/>
+
+            <TextView
+                android:id="@+id/txtWaktu"
+                android:text="25-02-1999 09:00:00"
+                android:textSize="13sp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+
+        <View android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#bbb"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center">
+
+            <ImageView
+                android:src="@drawable/markerblue"
+                android:layout_width="50px"
+                android:layout_height="50px"/>
+
+            <TextView
+                android:id="@+id/txtAlamat"
+                android:text="Jl. Veteran No 55 Padang"
+                android:textSize="13sp"
+                android:layout_marginTop="7dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <View android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#bbb"/>
+
+        <TextView
+            android:id="@+id/txtDeskrpisi"
+            android:text="sosialisai pangan event ini dilakukan dalam rangka
+            memperingati hari panan sedunia"
+            android:textSize="13sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:text="*Bukti terdaftar event"
+        android:textSize="10sp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

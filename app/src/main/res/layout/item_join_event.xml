@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="3dp"
+    android:layout_marginTop="5dp">
+
+    <ImageView
+        android:id="@+id/imgEvent"
+        android:src="@drawable/buttonabu"
+        android:layout_width="250px"
+        android:layout_height="250px" />
+
+    <LinearLayout
+        android:layout_marginLeft="7dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtNama"
+            android:text="Sosialisasi Pangan"
+            android:textColor="@color/black"
+            android:layout_marginTop="4dp"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            android:gravity="center">
+
+            <ImageView
+                android:src="@drawable/ic_time"
+                android:layout_width="25px"
+                android:layout_height="25px" />
+
+            <TextView
+                android:id="@+id/txtTgl"
+                android:text="25 Februari 2019"
+                android:textSize="12sp"
+                android:paddingLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            android:gravity="center">
+
+            <ImageView
+                android:src="@drawable/marker"
+                android:layout_width="25px"
+                android:layout_height="25px" />
+
+            <TextView
+                android:id="@+id/txtAlamat"
+                android:text="Jln Veteran No. 55"
+                android:paddingLeft="4dp"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tiara.appindustri">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/dinas"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.UpdateDeletePemasaran"></activity>
+        <activity android:name=".activity.Pemasaran" />
+        <activity android:name=".activity.UpdateAkun" />
+        <activity android:name=".activity.HistoryEvent" />
+        <activity android:name=".activity.UpdateDeleteProduksi" />
+        <activity android:name=".activity.UpdateDeletePeralatan" />
+        <activity android:name=".activity.UpdateDeletLegal" />
+        <activity android:name=".activity.UpdateDeleteEnergi" />
+        <activity android:name=".activity.UpdateDeleteBahanBaku" />
+        <activity android:name=".activity.Produksi" />
+        <activity android:name=".activity.Peralatan" />
+        <activity android:name=".activity.Legalitas" />
+        <activity android:name=".activity.Energi" />
+        <activity android:name=".activity.BahanBaku" />
+        <activity android:name=".activity.DetailJoinEvent" />
+        <activity
+            android:name=".activity.DetailEvent"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity" />
+        </activity>
+        <activity android:name=".activity.UpdateDataIndustri" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDcG5b6BWzuhCUk7544FgmnSeSqfDTqBS0" />
+
+        <activity android:name=".activity.RegisterUser" />
+        <activity
+            android:name=".activity.ListSearch"
+            android:parentActivityName=".activity.Login">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.Login" />
+        </activity>
+        <activity
+            android:name=".activity.UpdateIndustri"
+            android:parentActivityName=".activity.ListSearch">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.ListSearch" />
+        </activity>
+        <activity android:name=".activity.Login" />
+        <activity
+            android:name=".activity.Register"
+            android:parentActivityName=".activity.ListSearch">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.ListSearch" />
+        </activity>
+        <activity android:name=".activity.SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.MainActivity" />
+    </application>
+
+</manifest>

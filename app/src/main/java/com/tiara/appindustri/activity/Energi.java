@@ -1,0 +1,140 @@
+package com.tiara.appindustri.activity;
+
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.tiara.appindustri.R;
+import com.tiara.appindustri.SharedPrefManager;
+import com.tiara.appindustri.adapter.AdapterEnergi;
+import com.tiara.appindustri.model.DataEnergi;
+import com.tiara.appindustri.model.ResponseGetEnergi;
+import com.tiara.appindustri.model.ResponsePost;
+import com.tiara.appindustri.restapi.ConfigRetrofit;
+
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class Energi extends AppCompatActivity {
+
+    @BindView(R.id.txtBB)
+    TextView txtBB;
+    @BindView(R.id.recycler)
+    RecyclerView recycler;
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
+    
+    SharedPrefManager sharedPrefManager;
+    AdapterEnergi adapterEnegi;
+    String idIkm;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_bahan_baku);
+        ButterKnife.bind(this);
+
+        sharedPrefManager = new SharedPrefManager(this);
+        idIkm = sharedPrefManager.getSP_IDIKM();
+        
+        getData();
+        
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog();
+            }
+        });
+    }
+
+    EditText edtJenis, edtPemakaian, edtKebutuhan;
+    String jenis, kebuuthan, pemakaian;
+    private void showDialog() {
+        LayoutInflater inflater = getLayoutInflater();
+        View alertlayout = inflater.inflate(R.layout.insert_energi, null);
+
+        edtJenis = (EditText) alertlayout.findViewById(R.id.edtJenis);
+        edtKebutuhan = (EditText) alertlayout.findViewById(R.id.edtKebutuhan);
+        edtPemakaian = (EditText) alertlayout.findViewById(R.id.edtPemakaian);
+
+        final AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setView(alertlayout);
+        alert.setCancelable(false);
+        alert.setTitle("Input data");
+        alert.setPositiveButton("Simpan", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                jenis = edtJenis.getText().toString();
+                kebuuthan = edtKebutuhan.getText().toString();
+                pemakaian = edtPemakaian.getText().toString();
+
+                ConfigRetrofit.getInstance().insertEnergi(idIkm, jenis, pemakaian, kebuuthan). enqueue(new Callback<ResponsePost>() {
+                    @Override
+                    public void onResponse(Call<ResponsePost> call, Response<ResponsePost> response) {
+                        int stat = response.body().getStatus();
+                        if(stat ==1){
+                            Toast.makeText(Energi.this, "Insert Data Berhasil", Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                            recreate();
+                        } else{
+                            Toast.makeText(Energi.this, "Insert Data Gagal", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponsePost> call, Throwable t) {
+                        Toast.makeText(Energi.this, "Tidak Ada Jaringan", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+        alert.setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        alert.show();
+    }
+
+    private void getData() {
+        ConfigRetrofit.getInstance().getEnergi(idIkm).enqueue(new Callback<ResponseGetEnergi>() {
+            @Override
+            public void onResponse(Call<ResponseGetEnergi> call, Response<ResponseGetEnergi> response) {
+                int stat = response.body().getStatus();
+                if (stat == 1) {
+                    txtBB.setVisibility(View.GONE);
+                    List<DataEnergi> data = response.body().getData();
+                    adapterEnegi = new AdapterEnergi(Energi.this, data);
+                    recycler.setAdapter(adapterEnegi);
+                    recycler.setLayoutManager(new LinearLayoutManager(Energi.this));
+                    recycler.addItemDecoration(new DividerItemDecoration(Energi.this, DividerItemDecoration.VERTICAL));
+                } else {
+                    txtBB.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseGetEnergi> call, Throwable t) {
+                Toast.makeText(Energi.this, "Tidak Ada Jaringan", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+}
